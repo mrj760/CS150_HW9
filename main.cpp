@@ -4,13 +4,13 @@
 #include <iomanip>
 
 using namespace std;
-void printText(int spaceToTakeUp, std::string& text) {
+void printText(int spaceToTakeUp, const std::string& text) {
     std::cout << std::setw(spaceToTakeUp) << text << std::setw(4) << "";
 }
 void printInt(int spaceToTakeUp, int num) {
     std::cout << std::setw(spaceToTakeUp) << std::right << num << std::setw(4) << "";
 }
-void printNormalLine(int sec1, int sec2, int sec3, int sec4, int num, string& teacher, string& firstStudent, string& lastStudent){
+void printNormalLine(int sec1, int sec2, int sec3, int sec4, int num, const string& teacher, const string& firstStudent, const string& lastStudent){
     printInt(sec1,num);
     printText(sec2, teacher);
     printText(sec3, firstStudent);
