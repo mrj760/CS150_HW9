@@ -23,9 +23,11 @@ int main() {
     using namespace std;
 
 
-        /* PART 1: assign strings according to whether they are alphabetically higher or lower
-         * ...      so on this I'm not sure whether we were just supposed to base it on the first letter or all of them,
-         *              so I did what I could to get it so that we check every character in the name. It took me longer than it should have
+        /* PART 1: This code reads lines (names) from 3 files, and assigns 6 strings that represent students in a
+         *          class to a roster based on their first name's alphabetical priority. (First student and last student)
+         *
+         * ...   ....   So on this I'm not sure whether we were just supposed to base it on the first letter or all of them, so
+         *              I did what I could to get it so that we check every character in the name. It took me longer than it should have
          *              and if feels clunky (probably because I tried multiple solutions until it worked) but it's functional now.*/
 
     bool skipPart1 = false;
@@ -138,11 +140,47 @@ int main() {
     }
 
 
-    bool skipPart2 = false;
+
+
+        /*
+         * PART 2: Read numbers from a file and output them to console. Each line represents a hotel floor, as we progress through
+         *              the file, the floor ascends to the next. Each number written in the file represents the occupancy on that floor
+         *              We will skip floor 13
+         */
+
+
+    bool skipPart2 = true;
 
     if (!skipPart2) {
 
+        const double totalSuites = 120;
+        double totalOcc{0}; // occupied
+        ifstream file("occupancy.txt");
+        int floorOcc;
 
+
+        cout << " ** Occupancy Calculator ** " << endl;
+
+        cout << " * Suites Occupied On: * " << endl;
+
+
+        for (int i = 10; i < 17; i++) {
+
+            if (i==13)
+                continue;
+
+            string s;
+            getline(file, s);
+            floorOcc = stoi(s);
+            totalOcc+=floorOcc;
+
+            cout << "Floor " << i << ": " << floorOcc << endl;
+        }
+
+        cout << "\n" << setw(30) << "Total suites available: " << setw(10) << right << totalSuites << endl;
+        cout << setw(30) << "Suites Occupied: " << setw(10) << right << totalOcc << endl;
+        cout << setw(30) << "Percentage Occupied: " << setw(10) << right << fixed <<
+             setprecision(2) << (totalOcc/totalSuites)*100 << "%" << endl;
 
 
     }
